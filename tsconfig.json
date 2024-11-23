@@ -4,7 +4,12 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": true, // Strict mode enabled
+    "strictNullChecks": true, // Strictly check for null and undefined
+    "strictFunctionTypes": true, // Check function arguments and return types more strictly
+    "noImplicitAny": true, // Disallow variables or parameters with an implicit 'any' type
+    "noImplicitThis": true, // Disallow 'this' of type 'any' in functions
+    "alwaysStrict": true, // Emit 'use strict' directive in every file
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
