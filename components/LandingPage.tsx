@@ -1,56 +1,58 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Header from './Header'
-import HeroSection from './HeroSection'
-import FeaturesSection from './FeaturesSection'
-import ServiceBenefits from './ServiceBenefits'
-import PricingSection from './PricingSection'
-import ContactForm from './ContactForm'
+import { useState } from 'react';
+import Header from './Header';
+import HeroSection from './HeroSection';
+import FeaturesSection from './FeaturesSection';
+import ServiceBenefits from './ServiceBenefits';
+import PricingSection from './PricingSection';
+import ContactForm from './ContactForm';
 
 interface ContactFormState {
-  name: string
-  email: string
-  phone: string
+  name: string;
+  email: string;
+  phone: string;
 }
 
 export default function LandingPage() {
-  const [email, setEmail] = useState<string>('')
+  const [email, setEmail] = useState<string>('');
   const [contactForm, setContactForm] = useState<ContactFormState>({
     name: '',
     email: '',
     phone: '',
-  })
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+  });
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/submissions', {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api/submissions';
+
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(contactForm),
-      })
+      });
 
       if (response.ok) {
-        alert('문의가 성공적으로 제출되었습니다!')
-        setContactForm({ name: '', email: '', phone: '' })
+        alert('문의가 성공적으로 제출되었습니다!');
+        setContactForm({ name: '', email: '', phone: '' });
       } else {
-        const errorData = await response.json()
-        console.error('Submission error:', errorData)
-        alert('문의 제출 중 오류가 발생했습니다. 다시 시도해 주세요.')
+        const errorData = await response.json();
+        console.error('Submission error:', errorData);
+        alert('문의 제출 중 오류가 발생했습니다. 다시 시도해 주세요.');
       }
     } catch (error) {
-      console.error('Error submitting form:', error)
-      alert('문의 제출 중 오류가 발생했습니다. 다시 시도해 주세요.')
+      console.error('Error submitting form:', error);
+      alert('문의 제출 중 오류가 발생했습니다. 다시 시도해 주세요.');
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setIsSubmitting(false)
-  }
+  };
 
   return (
     <div className="min-h-screen">
@@ -66,5 +68,5 @@ export default function LandingPage() {
         isSubmitting={isSubmitting}
       />
     </div>
-  )
+  );
 }
