@@ -1,16 +1,32 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mic, Sliders, Lightbulb, IconType } from "lucide-react";
+import { Mic, Sliders, Lightbulb } from "lucide-react";
 
+// 아이콘 타입을 React의 SVGProps로 정의
 const features: {
-  icon: IconType;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   description: string;
   action: string;
 }[] = [
-  { icon: Mic, title: "정성적 인터뷰 참여자 모집", description: "정성적 인터뷰에 참여할 인터뷰 희망자를 보다 쉽게", action: "인터뷰 생성하기" },
-  { icon: Sliders, title: "인터뷰 제안 기능", description: "자신이 원하는 조건의 인터뷰 희망자 검색 및 인터뷰 신청 기능", action: "인터뷰 희망자 보러가기" },
-  { icon: Lightbulb, title: "참여할 인터뷰 탐색", description: "인터뷰 희망자들은 인터뷰 모집자가 생성한 인터뷰에 지원 가능", action: "인터뷰 보러가기" },
+  {
+    icon: Mic,
+    title: "정성적 인터뷰 참여자 모집",
+    description: "정성적 인터뷰에 참여할 인터뷰 희망자를 보다 쉽게",
+    action: "인터뷰 생성하기",
+  },
+  {
+    icon: Sliders,
+    title: "인터뷰 제안 기능",
+    description: "자신이 원하는 조건의 인터뷰 희망자 검색 및 인터뷰 신청 기능",
+    action: "인터뷰 희망자 보러가기",
+  },
+  {
+    icon: Lightbulb,
+    title: "참여할 인터뷰 탐색",
+    description: "인터뷰 희망자들은 인터뷰 모집자가 생성한 인터뷰에 지원 가능",
+    action: "인터뷰 보러가기",
+  },
 ];
 
 export default function FeaturesSection() {
