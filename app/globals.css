@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    /* Light mode color variables */
     --background: hsl(0, 0%, 100%);
     --foreground: hsl(222.2, 84%, 4.9%);
 
@@ -26,7 +27,7 @@
     --accent-foreground: var(--primary);
 
     --destructive: hsl(0, 84.2%, 60.2%);
-    --destructive-foreground: var(--primary-foreground);
+    --destructive-foreground: hsl(210, 40%, 98%);
 
     --border: hsl(214.3, 31.8%, 91.4%);
     --input: var(--border);
@@ -36,6 +37,7 @@
   }
 
   .dark {
+    /* Dark mode color variables */
     --background: hsl(222.2, 84%, 4.9%);
     --foreground: hsl(210, 40%, 98%);
 
@@ -70,8 +72,13 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif; /* 예시 폰트 추가 */
+  }
+
+  /* Optional: Add smooth scrolling for better UX */
+  html {
+    scroll-behavior: smooth;
   }
 }
