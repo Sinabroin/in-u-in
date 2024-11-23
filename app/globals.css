@@ -77,7 +77,6 @@
     @apply bg-background text-foreground;
   }
 
-  /* Optional: Add smooth scrolling for better UX */
   html {
     scroll-behavior: smooth;
   }
