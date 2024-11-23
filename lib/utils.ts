@@ -1,16 +1,19 @@
-.custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
 }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1;
+export function formatDate(input: string | number): string {
+  const date = new Date(input)
+  return date.toLocaleDateString("ko-KR", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #555;
+export function absoluteUrl(path: string) {
+  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
 }
