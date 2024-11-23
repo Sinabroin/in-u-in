@@ -1,0 +1,4 @@
+/* styles/custom-scrollbar.css */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
