@@ -4,14 +4,25 @@ export async function POST(request: Request) {
   try {
     const body = await request.json()
     
-    // 여기에 실제 데이터 저장 로직 구현
-    console.log('Received submission:', body)
-    
-    return NextResponse.json({ success: true })
+    // Here you would implement actual data storage logic
+    // For now, we'll just log the received data
+    console.log('Received form submission:', body)
+
+    // Return a success response
+    return NextResponse.json({ 
+      success: true, 
+      message: '문의가 성공적으로 제출되었습니다.' 
+    })
+
   } catch (error) {
-    console.error('Submission error:', error)
+    console.error('Form submission error:', error)
+    
+    // Return an error response
     return NextResponse.json(
-      { error: '제출 중 오류가 발생했습니다.' },
+      { 
+        success: false, 
+        message: '문의 제출 중 오류가 발생했습니다. 다시 시도해 주세요.' 
+      },
       { status: 500 }
     )
   }
