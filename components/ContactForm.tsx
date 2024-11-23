@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+// Define props for ContactForm
 interface ContactFormProps {
   contactForm: {
     name: string;
@@ -24,6 +25,7 @@ export default function ContactForm({
   handleSubmit,
   isSubmitting,
 }: ContactFormProps) {
+  // Input change handler
   const handleInputChange =
     (field: keyof typeof contactForm) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
