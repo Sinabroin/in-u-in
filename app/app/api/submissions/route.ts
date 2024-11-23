@@ -35,6 +35,12 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Form submission error:', error)
     
+    // Check if the error is a Prisma error
+    if (error instanceof Error) {
+      // Log the specific error message for debugging
+      console.error('Prisma error:', error.message)
+    }
+    
     return NextResponse.json(
       { 
         success: false, 
@@ -42,5 +48,7 @@ export async function POST(request: Request) {
       },
       { status: 500 }
     )
+  } finally {
+    await prisma.$disconnect()
   }
 }
