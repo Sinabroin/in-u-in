@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class', // 'media' 옵션도 사용 가능
+  darkMode: 'class', // 'media' or 'class' for dark mode
   content: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -9,6 +9,9 @@ module.exports = {
         secondary: 'hsl(210, 40%, 96.1%)',
         background: 'hsl(0, 0%, 100%)',
         foreground: 'hsl(222.2, 84%, 4.9%)',
+      },
+      borderRadius: {
+        DEFAULT: '0.5rem',
       },
     },
   },
