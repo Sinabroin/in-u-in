@@ -9,6 +9,7 @@ module.exports = {
         secondary: 'hsl(210, 40%, 96.1%)',
         background: 'hsl(0, 0%, 100%)',
         foreground: 'hsl(222.2, 84%, 4.9%)',
+        border: 'hsl(214.3, 31.8%, 91.4%)', // Ensure border is included
       },
       borderRadius: {
         DEFAULT: '0.5rem',
