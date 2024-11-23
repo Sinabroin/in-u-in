@@ -1,23 +1,40 @@
 import { NextResponse } from 'next/server'
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
 
 export async function POST(request: Request) {
   try {
     const body = await request.json()
     
-    // Here you would implement actual data storage logic
-    // For now, we'll just log the received data
-    console.log('Received form submission:', body)
+    // Validate the input
+    if (!body.name || !body.email || !body.phone) {
+      return NextResponse.json(
+        { success: false, message: '모든 필드를 입력해주세요.' },
+        { status: 400 }
+      )
+    }
 
-    // Return a success response
+    // Save to database
+    const contact = await prisma.contact.create({
+      data: {
+        name: body.name,
+        email: body.email,
+        phone: body.phone,
+      },
+    })
+
+    console.log('Saved form submission:', contact)
+
     return NextResponse.json({ 
       success: true, 
-      message: '문의가 성공적으로 제출되었습니다.' 
+      message: '문의가 성공적으로 제출되었습니다.',
+      data: contact
     })
 
   } catch (error) {
     console.error('Form submission error:', error)
     
-    // Return an error response
     return NextResponse.json(
       { 
         success: false, 
