@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'IN U IN은 맞춤형 인터뷰 관리 솔루션을 제공합니다. 간편하고 효율적인 인터뷰 관리를 경험해보세요.',
   viewport: 'width=device-width, initial-scale=1',
 };
-
+//주석
 export default function RootLayout({
   children,
 }: {
